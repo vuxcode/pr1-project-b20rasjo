@@ -4,5 +4,6 @@
 
 For example: 
 
-- 2022-10-24 18:00 Worked for 1 hour.
-  - *List the things you have done.*
+- 2023-04-10 12:00 worked for roughly 1 hour
+  - *Implemented a button and a function to play a sound when the button is pressed.*
+

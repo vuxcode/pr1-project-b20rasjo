@@ -1,10 +1,18 @@
 <!-- Start writing your project code in this file! -->
 <meta name="color-scheme" content="dark">
+ 
+<button id="play">Play</button>
 <script>
+var play = document.getElementById("play");    
+// Create function to attach sound
+function playSound()
+{
+    // Variable where audiofile i saved
+    var audio = new Audio("metronome.mp3");
+    // Built in audio play function
+    audio.play() 
+}
+// Attach playSound function to button
+play.addEventListener("click", playSound);
 
-
-
-
-
-    
 </script>
