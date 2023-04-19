@@ -1,18 +1,98 @@
 <!-- Start writing your project code in this file! -->
 <meta name="color-scheme" content="dark">
  
-<button id="play">Play</button>
+<button onclick="kickSound()">Kick</button>
+
+<button id="Kick">Kick</button>
+<button id="Snare">Snare</button>
+<button id="Hihat Closed">Hihat Closed</button>
+<button id="Hihat Open">Hihat Open</button>
+<button id="Ride">Ride</button>
+<button id="Crash">Crash</button>
+<button id="Tom1">Tom1</button>
+<button id="Tom2">Tom2</button>
+<button id="Tom3">Tom3</button>
+
 <script>
-var play = document.getElementById("play");    
-// Create function to attach sound
-function playSound()
+
+// Variables for all the buttons connecting them to the graphics
+
+var kick = document.getElementById("Kick");
+var snare = document.getElementById("Snare");
+var closedHH = document.getElementById("Hihat Closed");
+var openHH = document.getElementById("Hihat Open");
+var ride = document.getElementById("Ride");
+var crash = document.getElementById("Crash");
+var tom1 = document.getElementById("Tom1");
+var tom2 = document.getElementById("Tom2");
+var tom3 = document.getElementById("Tom3");
+
+// Create function to attach sounds
+function kickSound()
 {
-    // Variable where audiofile i saved
-    var audio = new Audio("metronome.mp3");
-    // Built in audio play function
-    audio.play() 
+    // Variable where audiofile is saved
+    var kickAudio = new Audio("Kick.mp3")
+    //  Use built in audio play function
+    kickAudio.play() 
 }
-// Attach playSound function to button
-play.addEventListener("click", playSound);
+
+function snareSound()
+{
+    var snareAudio = new Audio("Snare.mp3")
+    snareAudio.play() 
+}
+
+function closedSound()
+{
+    var closedAudio = new Audio("Hihat Closed.mp3")
+    closedAudio.play() 
+}
+
+function openSound()
+{
+    var openAudio = new Audio("Hihat Open.mp3")
+    openAudio.play() 
+}
+
+function rideSound()
+{
+    var rideAudio = new Audio("Ride.mp3")
+    rideAudio.play() 
+}
+
+function crashSound()
+{
+    var crashAudio = new Audio("Crash.mp3")
+    crashAudio.play() 
+}
+
+function tom1Sound()
+{
+    var tom1Audio = new Audio("Tom1.mp3")
+    tom1Audio.play() 
+}
+
+function tom2Sound()
+{
+    var tom2Audio = new Audio("Tom2.mp3")
+    tom2Audio.play() 
+}
+
+function tom3Sound()
+{
+    var tom3Audio = new Audio("Tom3.mp3")
+    tom3Audio.play() 
+}
+
+// Attach Sound functions to buttons
+kick.addEventListener("click", kickSound);
+snare.addEventListener("click", snareSound);
+closedHH.addEventListener("click", closedSound);
+openHH.addEventListener("click", openSound);
+ride.addEventListener("click", rideSound);
+crash.addEventListener("click", crashSound);
+tom1.addEventListener("click", tom1Sound);
+tom2.addEventListener("click", tom2Sound);
+tom3.addEventListener("click", tom3Sound);
 
 </script>
