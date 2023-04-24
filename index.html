@@ -1,98 +1,70 @@
 <!-- Start writing your project code in this file! -->
+<head>
 <meta name="color-scheme" content="dark">
+    <style>
+        button
+        {
+            font-size: larger;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
  
-<button onclick="kickSound()">Kick</button>
-
-<button id="Kick">Kick</button>
-<button id="Snare">Snare</button>
-<button id="Hihat Closed">Hihat Closed</button>
-<button id="Hihat Open">Hihat Open</button>
-<button id="Ride">Ride</button>
-<button id="Crash">Crash</button>
-<button id="Tom1">Tom1</button>
-<button id="Tom2">Tom2</button>
-<button id="Tom3">Tom3</button>
+<!-- Buttons for all the sounds! -->
+<button id="Kick">Kick <br> G</button>
+<button id="Snare">Snare <br> H</button>
+<button id="Hihat Closed">Hihat Closed <br> F</button>
+<button id="Hihat Open">Hihat Open <br> D</button>
+<button id="Ride">Ride <br> U</button>
+<button id="Crash">Crash <br> E</button>
+<button id="Tom1">Tom1 <br> R</button>
+<button id="Tom2">Tom2 <br> T</button>
+<button id="Tom3">Tom3 <br> Y</button>
 
 <script>
 
 // Variables for all the buttons connecting them to the graphics
 
-var kick = document.getElementById("Kick");
-var snare = document.getElementById("Snare");
-var closedHH = document.getElementById("Hihat Closed");
-var openHH = document.getElementById("Hihat Open");
-var ride = document.getElementById("Ride");
-var crash = document.getElementById("Crash");
-var tom1 = document.getElementById("Tom1");
-var tom2 = document.getElementById("Tom2");
-var tom3 = document.getElementById("Tom3");
-
 // Create function to attach sounds
-function kickSound()
+
+function playSound(buttonId)
 {
-    // Variable where audiofile is saved
-    var kickAudio = new Audio("Kick.mp3")
+    // Get the button element using Id Method
+    var button = document.getElementById(buttonId);
+
+    // Get audio file name from the button Id
+    var soundFile = buttonId + ".mp3";
+
+    // Create new audio object with the sound file
+    var audio = new Audio(soundFile);
+
     //  Use built in audio play function
-    kickAudio.play() 
+    audio.play(); 
 }
 
-function snareSound()
-{
-    var snareAudio = new Audio("Snare.mp3")
-    snareAudio.play() 
-}
+    // Attach playSound function to buttons
+    document.getElementById("Kick").addEventListener("click", function(){playSound("Kick");}); 
+    document.getElementById("Snare").addEventListener("click", function(){playSound("Snare");});
+    document.getElementById("Hihat Closed").addEventListener("click", function(){playSound("Hihat Closed");});
+    document.getElementById("Hihat Open").addEventListener("click", function(){playSound("Hihat Open");});
+    document.getElementById("Ride").addEventListener("click", function(){playSound("Ride");});
+    document.getElementById("Crash").addEventListener("click", function(){playSound("Crash");});
+    document.getElementById("Tom1").addEventListener("click", function(){playSound("Tom1");});
+    document.getElementById("Tom2").addEventListener("click", function(){playSound("Tom2");});
+    document.getElementById("Tom3").addEventListener("click", function(){playSound("Tom3");});
 
-function closedSound()
-{
-    var closedAudio = new Audio("Hihat Closed.mp3")
-    closedAudio.play() 
-}
-
-function openSound()
-{
-    var openAudio = new Audio("Hihat Open.mp3")
-    openAudio.play() 
-}
-
-function rideSound()
-{
-    var rideAudio = new Audio("Ride.mp3")
-    rideAudio.play() 
-}
-
-function crashSound()
-{
-    var crashAudio = new Audio("Crash.mp3")
-    crashAudio.play() 
-}
-
-function tom1Sound()
-{
-    var tom1Audio = new Audio("Tom1.mp3")
-    tom1Audio.play() 
-}
-
-function tom2Sound()
-{
-    var tom2Audio = new Audio("Tom2.mp3")
-    tom2Audio.play() 
-}
-
-function tom3Sound()
-{
-    var tom3Audio = new Audio("Tom3.mp3")
-    tom3Audio.play() 
-}
-
-// Attach Sound functions to buttons
-kick.addEventListener("click", kickSound);
-snare.addEventListener("click", snareSound);
-closedHH.addEventListener("click", closedSound);
-openHH.addEventListener("click", openSound);
-ride.addEventListener("click", rideSound);
-crash.addEventListener("click", crashSound);
-tom1.addEventListener("click", tom1Sound);
-tom2.addEventListener("click", tom2Sound);
-tom3.addEventListener("click", tom3Sound);
-
-</script>
+    document.addEventListener("keypress", function(event)
+    {
+        if(event.code === "KeyG"){playSound("Kick")}
+        else if(event.code === "KeyH"){playSound("Snare");}
+        else if(event.code === "KeyF"){playSound("Hihat Closed");}
+        else if(event.code === "KeyD"){playSound("Hihat Open");}
+        else if(event.code === "KeyU"){playSound("Ride");}
+        else if(event.code === "KeyE"){playSound("Crash");}
+        else if(event.code === "KeyR"){playSound("Tom1");}
+        else if(event.code === "KeyT"){playSound("Tom2");}
+        else if(event.code === "KeyY"){playSound("Tom3");}
+    } );
+    </script>
+</body>

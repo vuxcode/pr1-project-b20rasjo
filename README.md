@@ -11,8 +11,10 @@ The final program is not the goal! The aim of the project is to show how you hav
 
 > You can use this section of the file to keep notes about your project as you work on it.
 
-Made it so it is possible to play all sound by clicking on the buttons on screen with the mouse. Made an alternative button based on what we learned in lesson 16 that is connected directly to the function. It is different from the method i looked up, seems more effective. 
+-Made it so it is possible to play all sound by clicking on the buttons on screen with the mouse. Made an alternative button based on what we learned in lesson 16 that is connected directly to the function. It is different from the method i looked up, seems more effective. 
 Will try to find more effective ways of doing things compared to how they are now.
+
+- Made the code more effective with less repetitive elements. With only one function to play the sounds instead of a function for each sound. Also added the ability to play with the keyboard.
 
 # Project Summary
 
