@@ -2,20 +2,96 @@
 <head>
 <meta name="color-scheme" content="dark">
     <style>
+        
         button
         {
-            font-size: larger;
+            background: transparent;
+            color: red;
+            font-size: 20pt;
+            border: none;
+            position: absolute;
+            font-weight: 800;
+            text-shadow: -3px -3px 3px black, -1px -1px 1px black;
+        }
+        body 
+        {
+            
+            background: url("Drumkit.png");
+            background-repeat: no-repeat;
+            width: 951px;
+            height: 775px;
+        }
+        #Kick 
+        {
+            top: 440px;
+            left: 324px;
+            padding: 100px;
+        }
+        #Snare
+        {
+            top: 301px;
+            left: 222px;
+            padding: 16px;
+            width: 200px;
+        }
+        #HihatClosed
+        {
+            top: 163px;
+            left: 64px;
+            padding: 7px;
+            width: 180px;
+        }
+        #HihatOpen
+        {
+            top: 448px;
+            left: 84px;
             padding: 50px;
+            width: 164px;
+        }
+        #Ride
+        {
+            top: 23px;
+            left: 508px;
+            padding: 25px;
+            width: 300;
+        }
+        #Crash
+        {
+            top: 28px;
+            left: 89px;
+            padding: 15px;
+            width: 250px;
+        }
+        #Tom1
+        {
+            top: 190px;
+            left: 301px;
+            padding: 27px;
+            width: 140px;
+        }
+        #Tom2
+        {
+            top: 183px;
+            left: 450px;
+            padding: 34px;
+            width: 172px;
+        }
+        #Tom3
+        {
+            top: 310px;
+            left: 539px;
+            padding: 36px;
+            width: 193px;
         }
     </style>
 </head>
 <body>
  
 <!-- Buttons for all the sounds! -->
-<button id="Kick">Kick <br> G</button>
-<button id="Snare">Snare <br> H</button>
-<button id="Hihat Closed">Hihat Closed <br> F</button>
-<button id="Hihat Open">Hihat Open <br> D</button>
+<button id="Kick">Kick <br> H</button>
+<button id="Snare">Snare <br> G</button>
+<button id="HihatClosed">Hihat Closed <br> F</button>
+<button id="HihatOpen">Hihat Open <br> D</button>
 <button id="Ride">Ride <br> U</button>
 <button id="Crash">Crash <br> E</button>
 <button id="Tom1">Tom1 <br> R</button>
@@ -46,8 +122,8 @@ function playSound(buttonId)
     // Attach playSound function to buttons
     document.getElementById("Kick").addEventListener("click", function(){playSound("Kick");}); 
     document.getElementById("Snare").addEventListener("click", function(){playSound("Snare");});
-    document.getElementById("Hihat Closed").addEventListener("click", function(){playSound("Hihat Closed");});
-    document.getElementById("Hihat Open").addEventListener("click", function(){playSound("Hihat Open");});
+    document.getElementById("HihatClosed").addEventListener("click", function(){playSound("Hihat Closed");});
+    document.getElementById("HihatOpen").addEventListener("click", function(){playSound("Hihat Open");});
     document.getElementById("Ride").addEventListener("click", function(){playSound("Ride");});
     document.getElementById("Crash").addEventListener("click", function(){playSound("Crash");});
     document.getElementById("Tom1").addEventListener("click", function(){playSound("Tom1");});
@@ -56,8 +132,8 @@ function playSound(buttonId)
 
     document.addEventListener("keypress", function(event)
     {
-        if(event.code === "KeyG"){playSound("Kick")}
-        else if(event.code === "KeyH"){playSound("Snare");}
+        if(event.code === "KeyH"){playSound("Kick")}
+        else if(event.code === "KeyG"){playSound("Snare");}
         else if(event.code === "KeyF"){playSound("Hihat Closed");}
         else if(event.code === "KeyD"){playSound("Hihat Open");}
         else if(event.code === "KeyU"){playSound("Ride");}
