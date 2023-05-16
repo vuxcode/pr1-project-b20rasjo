@@ -86,7 +86,34 @@
     </style>
 </head>
 <body>
- 
+<!-- Volume range inputs -->    
+<input type="range" id="kickVolume" name="volume" min="0" max="11">
+<label for="kickVolume">Kick Volume</label> <br> 
+
+<input type="range" id="snareVolume" name="volume" min="0" max="11">
+<label for="snareVolume">Snare Volume</label> <br>
+
+<input type="range" id="hihatClosedVolume" name="volume" min="0" max="11">
+<label for="hihatClosedVolume">Closed Hihat Volume</label> <br>
+
+<input type="range" id="hihatOpenVolume" name="volume" min="0" max="11">
+<label for="hihatOpenVolume">Open Hihat Volume</label> <br>
+
+<input type="range" id="rideVolume" name="volume" min="0" max="11">
+<label for="rideVolume">Ride Volume</label> <br>
+
+<input type="range" id="crashVolume" name="volume" min="0" max="11">
+<label for="crashVolume">Crash Volume</label> <br>
+
+<input type="range" id="tom1Volume" name="volume" min="0" max="11">
+<label for="tom1Volume">Tom 1 Volume</label> <br>
+
+<input type="range" id="tom2Volume" name="volume" min="0" max="11">
+<label for="tom2Volume">Tom 2 Volume</label> <br>
+
+<input type="range" id="tom3Volume" name="volume" min="0" max="11">
+<label for="tom3Volume">Tom 3 Volume</label> <br>
+
 <!-- Buttons for all the sounds! -->
 <button id="Kick">Kick <br> H</button>
 <button id="Snare">Snare <br> G</button>
@@ -115,6 +142,12 @@ function playSound(buttonId)
     // Create new audio object with the sound file
     var audio = new Audio(soundFile);
 
+     // Get the corresponding volume range input value
+     var volumeInputId = buttonId.toLowerCase() + "Volume";
+      var volumeInput = document.getElementById(volumeInputId);
+      // Normalize the volume between 0 and 1
+      audio.volume = volumeInput.value / 11; 
+    
     //  Use built in audio play function
     audio.play(); 
 }
@@ -142,5 +175,19 @@ function playSound(buttonId)
         else if(event.code === "KeyT"){playSound("Tom2");}
         else if(event.code === "KeyY"){playSound("Tom3");}
     } );
+
+    // Event listener for volume range inputs
+    var volumeInputs = document.querySelectorAll('input[type="range"][name="volume"]');
+    volumeInputs.forEach(function(input) {
+      input.addEventListener("input", function() {
+        var buttonId = input.id.replace("Volume", "");
+        var button = document.getElementById(buttonId);
+        var soundFile = button  + ".mp3";
+        var audio = new Audio(soundFile);
+        audio.volume = input.value / 11; 
+        audio.play();
+      });
+    });
+
     </script>
 </body>
