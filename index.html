@@ -83,36 +83,46 @@
             padding: 36px;
             width: 193px;
         }
+
+        .volume-sliders
+        {
+            padding-left: 100%;
+            display: inline-block;
+            width: 150px;
+        }
     </style>
 </head>
 <body>
+
 <!-- Volume range inputs -->    
-<input type="range" id="kickVolume" name="volume" min="0" max="11">
-<label for="kickVolume">Kick Volume</label> <br> 
-
-<input type="range" id="snareVolume" name="volume" min="0" max="11">
-<label for="snareVolume">Snare Volume</label> <br>
-
-<input type="range" id="hihatClosedVolume" name="volume" min="0" max="11">
-<label for="hihatClosedVolume">Closed Hihat Volume</label> <br>
-
-<input type="range" id="hihatOpenVolume" name="volume" min="0" max="11">
-<label for="hihatOpenVolume">Open Hihat Volume</label> <br>
-
-<input type="range" id="rideVolume" name="volume" min="0" max="11">
-<label for="rideVolume">Ride Volume</label> <br>
-
-<input type="range" id="crashVolume" name="volume" min="0" max="11">
-<label for="crashVolume">Crash Volume</label> <br>
-
-<input type="range" id="tom1Volume" name="volume" min="0" max="11">
-<label for="tom1Volume">Tom 1 Volume</label> <br>
-
-<input type="range" id="tom2Volume" name="volume" min="0" max="11">
-<label for="tom2Volume">Tom 2 Volume</label> <br>
-
-<input type="range" id="tom3Volume" name="volume" min="0" max="11">
-<label for="tom3Volume">Tom 3 Volume</label> <br>
+<div class= volume-sliders>
+    <input type="range" id="kickVolume" name="volume" min="0" max="10" value="10"> 
+    <label for="kickVolume">Kick Volume</label> <br> <br>
+    
+    <input type="range" id="snareVolume" name="volume" min="0" max="10" value="10">
+    <label for="snareVolume">Snare Volume</label> <br> <br>
+    
+    <input type="range" id="hihatclosedVolume" name="volume" min="0" max="10" value="10">
+    <label for="hihatClosedVolume">Closed Hihat Volume</label> <br> <br>
+    
+    <input type="range" id="hihatopenVolume" name="volume" min="0" max="10" value="10">
+    <label for="hihatOpenVolume">Open Hihat Volume</label> <br> <br>
+    
+    <input type="range" id="rideVolume" name="volume" min="0" max="10" value="10">
+    <label for="rideVolume">Ride Volume</label> <br> <br>
+    
+    <input type="range" id="crashVolume" name="volume" min="0" max="10" value="10">
+    <label for="crashVolume">Crash Volume</label> <br> <br>
+    
+    <input type="range" id="tom1Volume" name="volume" min="0" max="10" value="10">
+    <label for="tom1Volume">Tom 1 Volume</label> <br> <br>
+    
+    <input type="range" id="tom2Volume" name="volume" min="0" max="10" value="10">
+    <label for="tom2Volume">Tom 2 Volume</label> <br> <br>
+    
+    <input type="range" id="tom3Volume" name="volume" min="0" max="10" value="10" >
+    <label for="tom3Volume">Tom 3 Volume</label> <br> <br>
+</div>
 
 <!-- Buttons for all the sounds! -->
 <button id="Kick">Kick <br> H</button>
@@ -133,20 +143,23 @@
 
 function playSound(buttonId)
 {
+    console.log(buttonId);
     // Get the button element using Id Method
     var button = document.getElementById(buttonId);
 
     // Get audio file name from the button Id
     var soundFile = buttonId + ".mp3";
+    console.log(buttonId + ".mp3");
 
     // Create new audio object with the sound file
     var audio = new Audio(soundFile);
 
      // Get the corresponding volume range input value
      var volumeInputId = buttonId.toLowerCase() + "Volume";
+     console.log(volumeInputId);
       var volumeInput = document.getElementById(volumeInputId);
       // Normalize the volume between 0 and 1
-      audio.volume = volumeInput.value / 11; 
+      audio.volume = volumeInput.value / 10; 
     
     //  Use built in audio play function
     audio.play(); 
@@ -155,8 +168,8 @@ function playSound(buttonId)
     // Attach playSound function to buttons
     document.getElementById("Kick").addEventListener("click", function(){playSound("Kick");}); 
     document.getElementById("Snare").addEventListener("click", function(){playSound("Snare");});
-    document.getElementById("HihatClosed").addEventListener("click", function(){playSound("Hihat Closed");});
-    document.getElementById("HihatOpen").addEventListener("click", function(){playSound("Hihat Open");});
+    document.getElementById("HihatClosed").addEventListener("click", function(){playSound("HihatClosed");});
+    document.getElementById("HihatOpen").addEventListener("click", function(){playSound("HihatOpen");});
     document.getElementById("Ride").addEventListener("click", function(){playSound("Ride");});
     document.getElementById("Crash").addEventListener("click", function(){playSound("Crash");});
     document.getElementById("Tom1").addEventListener("click", function(){playSound("Tom1");});
@@ -167,8 +180,8 @@ function playSound(buttonId)
     {
         if(event.code === "KeyH"){playSound("Kick")}
         else if(event.code === "KeyG"){playSound("Snare");}
-        else if(event.code === "KeyF"){playSound("Hihat Closed");}
-        else if(event.code === "KeyD"){playSound("Hihat Open");}
+        else if(event.code === "KeyF"){playSound("HihatClosed");}
+        else if(event.code === "KeyD"){playSound("HihatOpen");}
         else if(event.code === "KeyU"){playSound("Ride");}
         else if(event.code === "KeyE"){playSound("Crash");}
         else if(event.code === "KeyR"){playSound("Tom1");}
@@ -178,13 +191,17 @@ function playSound(buttonId)
 
     // Event listener for volume range inputs
     var volumeInputs = document.querySelectorAll('input[type="range"][name="volume"]');
-    volumeInputs.forEach(function(input) {
-      input.addEventListener("input", function() {
+    volumeInputs.forEach(function(input) 
+    {
+      input.addEventListener("input", function() 
+      {
         var buttonId = input.id.replace("Volume", "");
         var button = document.getElementById(buttonId);
         var soundFile = button  + ".mp3";
+        console.log(button + ".mp3");
         var audio = new Audio(soundFile);
-        audio.volume = input.value / 11; 
+        console.log(soundFile);
+        audio.volume = input.value / 10; 
         audio.play();
       });
     });
