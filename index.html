@@ -147,7 +147,7 @@ function playSound(buttonId)
     // Get the button element using Id Method
     var button = document.getElementById(buttonId);
 
-    // Get audio file name from the button Id
+    // Get audio file name from the button Id. "Kick" would become "Kick.mp3"
     var soundFile = buttonId + ".mp3";
     console.log(buttonId + ".mp3");
 
@@ -155,17 +155,18 @@ function playSound(buttonId)
     var audio = new Audio(soundFile);
 
      // Get the corresponding volume range input value
-     var volumeInputId = buttonId.toLowerCase() + "Volume";
-     console.log(volumeInputId);
-      var volumeInput = document.getElementById(volumeInputId);
-      // Normalize the volume between 0 and 1
-      audio.volume = volumeInput.value / 10; 
+    var volumeInputId = buttonId.toLowerCase() + "Volume";
+    console.log(volumeInputId);
+    var volumeInput = document.getElementById(volumeInputId);
+
+      // The value is divided by 10 to normalize it between 0 and 1
+    audio.volume = volumeInput.value / 10; 
     
-    //  Use built in audio play function
+    //  Use built in audio play function to play the drums
     audio.play(); 
 }
 
-    // Attach playSound function to buttons
+    // Attach playSound function to buttons that can be clicked with the mouse
     document.getElementById("Kick").addEventListener("click", function(){playSound("Kick");}); 
     document.getElementById("Snare").addEventListener("click", function(){playSound("Snare");});
     document.getElementById("HihatClosed").addEventListener("click", function(){playSound("HihatClosed");});
@@ -176,8 +177,10 @@ function playSound(buttonId)
     document.getElementById("Tom2").addEventListener("click", function(){playSound("Tom2");});
     document.getElementById("Tom3").addEventListener("click", function(){playSound("Tom3");});
 
+    //Attach playSound function to buttons on the keyboard
     document.addEventListener("keypress", function(event)
     {
+        // Cannot have a space in filename
         if(event.code === "KeyH"){playSound("Kick")}
         else if(event.code === "KeyG"){playSound("Snare");}
         else if(event.code === "KeyF"){playSound("HihatClosed");}
@@ -189,19 +192,30 @@ function playSound(buttonId)
         else if(event.code === "KeyY"){playSound("Tom3");}
     } );
 
-    // Event listener for volume range inputs
+    // NodeList using querySelectorAll method It selects all the 'input' elements that have the attribute type="range" and name="volume"
     var volumeInputs = document.querySelectorAll('input[type="range"][name="volume"]');
+
+    // forEach function in the NodeList affecting input parameter input
     volumeInputs.forEach(function(input) 
     {
       input.addEventListener("input", function() 
       {
+        /* 
+        Retrieves the Id of the volume range input element. The volume range input add the string "Volume" to the button Id. 
+        "Kick" volume range input id will be "kickVolume". Replace "Volume" to play the sound associated with the button.
+        */
         var buttonId = input.id.replace("Volume", "");
-        var button = document.getElementById(buttonId);
-        var soundFile = button  + ".mp3";
-        console.log(button + ".mp3");
+
+        //Get the corresponding soundfile
+        var soundFile = "metronome.mp3";
+        
+        // Create new audio object with the sound file
         var audio = new Audio(soundFile);
         console.log(soundFile);
+
+        // Represents the current value of the corresponding volume range. Heard with the clicks 
         audio.volume = input.value / 10; 
+        // Plays the "metronome.mp3" file when moving range sliders.
         audio.play();
       });
     });
