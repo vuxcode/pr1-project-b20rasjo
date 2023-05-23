@@ -12,3 +12,7 @@ For example:
 
 - 2023 04-24 15:00 worked for roughly 3 hours
  - * Implemented ability to use keyboard to play the sounds. Made code less repetitive and more affective.
+
+ - Researched querySelectorAll and node list for volume range sliders 
+
+ Implemented picture with css and area to klick on button over corresponding drums
