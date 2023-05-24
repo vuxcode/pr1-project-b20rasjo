@@ -207,7 +207,7 @@ function playSound(buttonId)
         var buttonId = input.id.replace("Volume", "");
 
         //Get the corresponding soundfile
-        var soundFile = "metronome.mp3";
+        var soundFile = buttonId + ".mp3";
         
         // Create new audio object with the sound file
         var audio = new Audio(soundFile);
